@@ -1,0 +1,1087 @@
+/*--- Global ---*/
+body {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  font-family: "PT Serif", serif;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
+}
+
+h1 {
+  font-family: "Dancing Script", cursive;
+  margin: 0;
+  padding: 0;
+  font-size: 5em;
+  padding: 10px;
+  margin-left: 30px;
+  color: white;
+}
+
+h2 {
+  font-family: "Sawarabi Gothic", sans-serif;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+h3 {
+  font-family: "Sawarabi Gothic", sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  flex-basis: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: black;
+  font-family: "Dancing Script", cursive;
+  font-size: 3em;
+}
+
+.mobile-menu {
+  display: flex;
+  width: 100%;
+}
+
+.mobile-title {
+  text-align: center;
+  margin-right: 11%;
+}
+
+/*--- Header and Nav ---*/
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  background: black;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+header h1 {
+  font-family: "Sawarabi Gothic", sans-serif;
+  flex-basis: 100%;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.left-nav-items .nav-item,
+.right-nav-items .nav-item {
+  border: none;
+}
+
+.left-nav-items .nav-item a,
+.right-nav-items .nav-item a {
+  color: white;
+  font-weight: 100;
+  font-size: 1em;
+}
+
+.left-nav-items .nav-item a:hover,
+.right-nav-items .nav-item a:hover {
+  color: pink;
+}
+
+.main-nav {
+  display: flex;
+  flex-basis: 100%;
+  align-self: center;
+  justify-content: center;
+}
+
+.ad-banner {
+  width: 100%;
+  background-color: pink;
+  margin-bottom: 10px;
+}
+
+/*--- Mobile Nav ---*/
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+header {
+  background: black;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Button styling */
+.menu-toggle {
+  display: inline-block;
+  padding: 0.75em 15px;
+  line-height: 1em;
+  font-size: 1.5em;
+  color: white;
+}
+
+/*
+ Default styles + Mobile first
+ Offscreen menu style
+*/
+.main-menu {
+  position: absolute;
+  left: -200px;
+  top: 0;
+  height: 100%;
+  overflow-x: visible;
+  transition: left 0.3s ease, box-shadow 0.3s ease;
+  z-index: 999;
+}
+
+.main-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 2.5em 0 0;
+  /* Hide shadow w/ -8px while 'closed' */
+  -webkit-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
+  box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
+  min-height: 100%;
+  width: 200px;
+  background: #1a1a1a;
+}
+
+.main-menu a {
+  display: block;
+  padding: 0.75em 15px;
+  line-height: 1em;
+  font-size: 1em;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #383838;
+}
+
+.main-menu li:first-child a {
+  border-top: 1px solid #383838;
+}
+
+.main-menu a:hover,
+.main-menu a:focus {
+  background: #333;
+  text-decoration: underline;
+}
+
+.main-menu .menu-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/*
+ On small devices, allow it to toggle...
+*/
+/*
+ :target for non-JavaScript
+ aria-expanded="true/false" will be for JavaScript
+*/
+.main-menu:target,
+.main-menu[aria-expanded="true"] {
+  left: 0;
+  outline: none;
+  -moz-box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.main-menu:target .menu-close,
+.main-menu[aria-expanded="true"] .menu-close {
+  z-index: 1001;
+}
+
+.main-menu:target ul,
+.main-menu[aria-expanded="true"] ul {
+  position: relative;
+  z-index: 1000;
+}
+
+.main-menu:target + .backdrop,
+.main-menu[aria-expanded="true"] + .backdrop {
+  position: absolute;
+  display: block;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background: #000;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: default;
+}
+
+@supports (position: fixed) {
+  .main-menu,
+  .main-menu:target + .backdrop,
+  .main-menu[aria-expanded="true"] + .backdrop {
+    position: fixed;
+  }
+}
+
+/*--- Landing Page ---*/
+.landing {
+  background: url(../img/homepage-banner.jpg) no-repeat center center fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)),
+    url(../img/homepage-banner.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+.landing-strip {
+  position: absolute;
+  bottom: 100px;
+  height: 200px;
+  width: 100%;
+  background: black;
+  background-color: rgba(0, 0, 0, 0.85);
+  -webkit-clip-path: polygon(0 0, 1600px 0, 1600px 85%, 0 100%);
+  clip-path: polygon(0 0, 1600px 0, 1600px 85%, 0 100%);
+}
+
+.mob-subtitle {
+  display: none;
+}
+
+.landing-nav {
+  list-style-type: none;
+}
+
+.nav-item {
+  display: inline;
+  border-left: 1px solid pink;
+}
+
+.nav-item:last-child {
+  border-right: 1px solid pink;
+}
+
+.nav-item a {
+  color: pink;
+  text-decoration: none;
+  padding: 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: "PT Serif", serif;
+}
+
+.nav-item a:hover {
+  color: purple;
+}
+
+/*--- Product Page ----*/
+.product-menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 10px;
+  flex-basis: 90%;
+  justify-content: center;
+}
+
+.treatments-title {
+  margin-bottom: 5px;
+}
+
+.product-menu p.note {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 7px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.note-wrap {
+  width: 100%;
+}
+
+.product-group {
+  width: 350px;
+  background-color: #dcdcdc;
+  background-color: rgba(220, 220, 220, 0.2);
+  padding: 1%;
+  padding-top: 0;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.product-group ul {
+  margin: 0;
+  padding: 0;
+}
+
+.product-group li {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 10px;
+  border-radius: 5px;
+  background: grey;
+  background-color: rgba(211, 211, 211, 0.2);
+  margin: 5px;
+}
+
+.product-group h3 {
+  text-align: center;
+}
+
+.product-group li p {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.product-group li span {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.add-btn {
+  display: flex;
+  border: none;
+  color: black;
+  background: pink;
+  background-color: rgba(255, 193, 203, 0.85);
+  cursor: pointer;
+  padding: 7px;
+  height: 35px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.add-btn:last-of-type {
+  margin-bottom: 10px;
+}
+
+.last-list-item {
+  background: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.add-btn:hover {
+  color: black;
+  background: white;
+}
+
+.treatment-img-wrapper {
+  text-align: center;
+}
+
+.treatment-img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/*--- Contact Page ---*/
+.contact {
+  display: flex;
+  justify-content: center;
+  flex-basis: 90%;
+  flex-wrap: wrap;
+}
+
+.contact-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  background: grey;
+  background-color: rgba(211, 211, 211, 0.5);
+  border-radius: 5px;
+  padding: 1%;
+}
+
+.form-input-wrapper {
+  width: 50%;
+}
+.form-submit-wrapper {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.contact-form-input {
+  width: 80%;
+  padding: 3%;
+  margin: 5%;
+  border: none;
+  border-bottom: 2px solid grey;
+  background: none;
+}
+
+.textarea-wrapper {
+  width: 93%;
+}
+
+.contact-form textarea {
+  width: 100%;
+  border: none;
+  border: 2px solid grey;
+  margin: 2%;
+  background: none;
+}
+
+.submit {
+  cursor: pointer;
+  background: black;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 3%;
+  margin: 2%;
+  border-radius: 5px;
+}
+
+/*--- Login Page ---*/
+.login h3,
+.register h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.login-page-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
+}
+
+.login {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 30%;
+  padding: 1%;
+  margin: 1%;
+  background: grey;
+  background-color: rgba(211, 211, 211, 0.5);
+  border-radius: 5px;
+}
+
+.login-form a {
+  padding: 10px;
+}
+
+.register {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 43%;
+  padding: 1%;
+  margin: 1%;
+  background: grey;
+  background-color: rgba(211, 211, 211, 0.5);
+  border-radius: 5px;
+}
+
+.register small {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.register-form-input {
+  width: 30%;
+  padding: 3%;
+  margin: 5%;
+  border: none;
+  border-bottom: 2px solid grey;
+  background: none;
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login-submit {
+  cursor: pointer;
+  background: black;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  border: none;
+  width: 90%;
+  padding: 3%;
+  margin: 2%;
+  border-radius: 5px;
+}
+
+/*--- Account Page ---*/
+.account-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 90%;
+  justify-content: center;
+}
+
+.appointments {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 80%;
+  justify-content: center;
+}
+
+.appointments h3 {
+  width: 100%;
+}
+
+.appointments p {
+  width: 100%;
+}
+
+.edit-profile {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 2% 2% 1% 0;
+  background: grey;
+  background-color: rgba(211, 211, 211, 0.5);
+  border-radius: 5px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.edit-profile-form-input-wrapper {
+  display: flex;
+  margin: 0;
+  width: 40%;
+}
+
+.edit-profile-input {
+  width: 100%;
+  padding: 3%;
+  margin: 5%;
+  border: none;
+  border-bottom: 2px solid grey;
+  background: none;
+}
+
+.save-btn {
+  height: 50px;
+  align-self: center;
+  margin-left: 2%;
+}
+
+table {
+  border: 1px solid #eee;
+  width: 100%;
+}
+
+table tr:nth-child(even) {
+  background-color: #eee;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+td,
+th {
+  padding: 0.5%;
+  text-align: left;
+}
+
+.account-btn {
+  cursor: pointer;
+  background: black;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  border: none;
+  padding: 1%;
+  border-radius: 5px;
+  width: 150px;
+  margin-bottom: 5px;
+}
+
+.cancel-btn {
+  background: red;
+}
+
+.cancel-btn2 {
+  background: red;
+  height: 50px;
+  align-self: center;
+  margin-left: 0.5%;
+}
+
+.account-book-btn {
+  padding: 1.5%;
+}
+
+/*--- Basket ---*/
+.basket-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.basket {
+  width: 80%;
+}
+
+.basket-warning {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  color: red;
+}
+
+.desktop-hide {
+  display: none;
+}
+
+.mobile-details-wrapper {
+  display: flex;
+}
+
+.details {
+  width: 50%;
+}
+
+.cancel-order {
+  text-align: center;
+  padding-top: 10%;
+}
+
+/*--- Order Confirm Page ---*/
+.confirm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.basket-well {
+  width: 100%;
+}
+
+.return-btn {
+  margin-top: 10px;
+}
+
+/*--- Footer --- */
+footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 150px;
+  margin-top: 3%;
+  background: black;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 1%;
+  padding-bottom: 0;
+  border-top: 10px solid pink;
+}
+
+footer h4 {
+  font-size: 1.3em;
+  padding: 5px;
+  margin: 0;
+}
+
+footer p {
+  font-size: 1.1em;
+}
+
+.phone-num {
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.social-icon {
+  font-size: 2.5em;
+  color: white;
+}
+
+.created-by p {
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-links a {
+  display: flex;
+  align-self: center;
+  color: white;
+  padding: 20px 10px;
+}
+
+.footer-links a,
+.footer-links a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-links a:hover,
+.social-links i:hover {
+  color: pink;
+}
+
+/*-------------- Media Queries --------------*/
+
+@media screen and (max-width: 901px) {
+  .left-nav-items .nav-item a,
+  .right-nav-items .nav-item a {
+    padding-right: 0;
+    font-size: 0.9em;
+  }
+
+  /*--- Product Page ---*/
+  .product-group {
+    width: 100%;
+  }
+
+  .note {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 651px) {
+  ul.landing-nav,
+  .header h1 {
+    display: none;
+  }
+
+  .mob-subtitle {
+    display: block;
+    text-align: left;
+    margin-left: 4%;
+    padding: 3%;
+    padding-left: 0;
+    color: pink;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: "PT Serif", serif;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .mobile-title {
+    margin: 0 auto;
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  .page-title {
+    font-size: 2.3em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  /*--- Basket ---*/
+  .basket {
+    width: 95%;
+  }
+
+  .basket-well table {
+    font-size: 0.9em;
+  }
+
+  .date-btn {
+    margin-bottom: 5px;
+  }
+
+  .mobile-hide {
+    display: none;
+  }
+
+  .desktop-hide {
+    display: block;
+  }
+
+  .mobile-basket-wrapper {
+    width: 10%;
+  }
+
+  .mobile-basket {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    padding-left: 0;
+    font-size: 1.3em;
+    margin-top: 15px;
+  }
+
+  .mobile-basket:visited {
+    color: white;
+  }
+}
+
+@media screen and (min-width: 651px) {
+  /* This gets rid of mobile menu on larger than 700px screens */
+  .menu-toggle,
+  .mobile-menu,
+  .main-menu .menu-close,
+  .main-menu a {
+    display: none;
+  }
+
+  /* Undo positioning of off-canvas menu */
+  .main-menu {
+    position: relative;
+    left: auto;
+    top: auto;
+    height: auto;
+  }
+
+  .main-menu a:hover,
+  .main-menu a:focus {
+    background: none; /* Remove background from off-canvas styling */
+    color: #c00;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .landing-title {
+    padding: 20px;
+    padding-bottom: 5px;
+    margin: 0;
+    font-size: 3.2em;
+  }
+
+  .landing {
+    background: url(../img/homepage-banner.jpg) no-repeat fixed !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url(../img/homepage-banner.jpg) no-repeat fixed !important;
+    background-size: cover !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  .landing-strip {
+    height: 150px;
+    bottom: 30%;
+    background: black;
+    background-color: rgba(0, 0, 0, 0.85);
+    -webkit-clip-path: polygon(0 0, 1600px 0, 1600px 85%, 0 100%);
+    clip-path: none;
+  }
+
+  .nav-item a {
+    padding: 20px;
+    padding-top: 5px;
+    font-size: 1em;
+  }
+
+  .landing-nav {
+    padding-left: 3%;
+  }
+
+  /*--- Contact Page ---*/
+
+  .form-input-wrapper {
+    width: 100%;
+  }
+
+  .textarea-wrapper {
+    width: 100%;
+  }
+
+  .contact-form textarea {
+    width: 94%;
+  }
+
+  /*--- Login Page ---*/
+  .login {
+    flex-basis: 90%;
+  }
+
+  .register {
+    flex-basis: 90%;
+  }
+
+  .register-form-input {
+    width: 100%;
+  }
+
+  /*--- Account Page ---*/
+
+  .appointments {
+    width: 80%;
+  }
+
+  .appointments p {
+    font-size: 0.9em;
+  }
+
+  .appointments table {
+    font-size: 0.9em;
+  }
+
+  .edit-profile-form-input-wrapper {
+    display: flex;
+    margin: 0;
+    width: 100%;
+  }
+
+  .account-btn {
+    font-size: 0.8em;
+    padding: 7px;
+    width: 90%;
+    margin: 5px auto;
+  }
+
+  .save-btn,
+  .cancel-btn2 {
+    font-size: 1em;
+  }
+
+  .edit-profile-btn {
+    width: 100px;
+    font-size: 1em;
+  }
+
+  /*--- Footer ---*/
+
+  footer {
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+
+  .social {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .created-by {
+    display: none;
+  }
+
+  .footer-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .footer-links a {
+    padding: 0;
+  }
+
+  .social a {
+    padding: 10px;
+  }
+
+  footer h4 {
+    font-size: 1em;
+    padding: 5px;
+    margin: 0;
+  }
+
+  footer p {
+    font-size: 0.9em;
+  }
+
+  footer a {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 451px) {
+  /*--- Landing Page ---*/
+  .landing-strip {
+    height: 130px;
+    bottom: 20%;
+  }
+
+  .landing-title {
+    padding: 20px;
+    margin: 0;
+    font-size: 2.2em;
+  }
+
+  .mob-subtitle {
+    display: block;
+    text-align: left;
+    margin-left: 4%;
+    padding: 0;
+    color: pink;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: "PT Serif", serif;
+  }
+
+  .mobile-title {
+    font-size: 1.6em;
+  }
+
+  /*--- Product Page ---*/
+
+  .product-group {
+    width: 90%;
+  }
+
+  .product-group li {
+    width: 90%;
+    margin: 5px auto;
+  }
+
+  .product-group span {
+    display: flex;
+  }
+
+  .note-wrap {
+    width: 70%;
+  }
+
+  .note {
+    font-size: 0.8em;
+  }
+
+  /*--- Login Page ---*/
+  .login-form a {
+    font-size: 0.9em;
+    padding: 7px;
+  }
+}
